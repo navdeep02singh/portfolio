@@ -76,23 +76,43 @@
         }
 
         .display-lg {
-            font-size: 3.5rem;
+            font-size: 1.85rem;
             font-weight: 800;
             letter-spacing: -0.02em;
             line-height: 1.1;
+            overflow-wrap: break-word;
+        }
+
+        @media (min-width: 768px) {
+            .display-lg {
+                font-size: 3.5rem;
+            }
         }
 
         .display-md {
-            font-size: 2.75rem;
+            font-size: 1.55rem;
             font-weight: 800;
             letter-spacing: -0.02em;
             line-height: 1.1;
+            overflow-wrap: break-word;
+        }
+
+        @media (min-width: 768px) {
+            .display-md {
+                font-size: 2.75rem;
+            }
         }
 
         .headline-sm {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
             letter-spacing: -0.01em;
+        }
+
+        @media (min-width: 768px) {
+            .headline-sm {
+                font-size: 1.5rem;
+            }
         }
 
         .body-lg {
@@ -108,8 +128,15 @@
         }
 
         .pg-padding {
-            padding-top: 160px;
-            padding-bottom: 128px;
+            padding-top: 120px;
+            padding-bottom: 80px;
+        }
+
+        @media (min-width: 768px) {
+            .pg-padding {
+                padding-top: 160px;
+                padding-bottom: 128px;
+            }
         }
 
         .section-gap {
@@ -180,6 +207,7 @@
                     N</div>
                 Navdeep Singh
             </a>
+            <!-- Desktop Menu -->
             <div class="hidden md:flex gap-8 font-medium text-sm items-center">
                 <a href="index.html" class="text-on-surface-variant hover:text-primary transition-colors">Home</a>
                 <a href="skills.html" class="text-primary font-bold border-b-2 border-primary pb-1">Skills</a>
@@ -188,21 +216,42 @@
                 <a href="reflection.html"
                     class="text-on-surface-variant hover:text-primary transition-colors">Reflection</a>
                 <a href="contact.html" class="text-on-surface-variant hover:text-primary transition-colors">Contact</a>
-
             </div>
-            <button class="md:hidden text-primary">
+
+            <!-- Mobile Menu Trigger -->
+            <button class="md:hidden text-primary"
+                onclick="document.getElementById('mobile-menu').classList.remove('translate-x-full')">
                 <span class="material-symbols-outlined">menu</span>
             </button>
+
         </div>
     </nav>
+
+    <!-- Mobile Full-screen Menu -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[60] bg-white/95 backdrop-blur-xl translate-x-full transition-transform duration-300 md:hidden flex flex-col items-center justify-center gap-8 shadow-2xl">
+        <button class="absolute top-6 right-6 text-primary"
+            onclick="document.getElementById('mobile-menu').classList.add('translate-x-full')">
+            <span class="material-symbols-outlined text-4xl">close</span>
+        </button>
+        <a href="index.html"
+            class="text-2xl font-bold text-on-surface-variant hover:text-primary transition-colors">Home</a>
+        <a href="skills.html" class="text-2xl font-black text-primary">Skills</a>
+        <a href="development.html"
+            class="text-2xl font-bold text-on-surface-variant hover:text-primary transition-colors">Development</a>
+        <a href="reflection.html"
+            class="text-2xl font-bold text-on-surface-variant hover:text-primary transition-colors">Reflection</a>
+        <a href="contact.html"
+            class="text-2xl font-bold text-on-surface-variant hover:text-primary transition-colors">Contact</a>
+    </div>
 
     <main class="max-w-7xl mx-auto px-6 pg-padding flex flex-col section-gap animate-fade-in">
         <header
             class="relative gradient-btn p-10 md:p-16 rounded-[2.5rem] mb-8 overflow-hidden shadow-soft interactive-card border-none">
             <div class="absolute inset-0 dot-pattern opacity-30"></div>
-            <div class="relative z-10 max-w-3xl">
+            <div class="relative z-10 max-w-3xl text-center md:text-left mx-auto md:mx-0">
                 <h1 class="display-lg text-white mb-4">Core <br /><span class="text-white/90">Employability</span>
-                    Skills.</h1>
+                    Skills</h1>
                 <p class="body-lg text-white/80 text-lg">Documented evidence of professional competency development
                     built through practical engagement.</p>
             </div>
@@ -286,10 +335,11 @@
 
     <footer class="bg-surface-container-low pt-20 pb-12 border-t ghost-border">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 text-center md:text-left">
                 <!-- Branding & Bio -->
-                <div class="col-span-1 md:col-span-2">
-                    <a href="index.html" class="headline-sm text-on-surface flex items-center gap-3 mb-6">
+                <div class="col-span-1 md:col-span-2 flex flex-col items-center md:items-start">
+                    <a href="index.html"
+                        class="headline-sm text-on-surface flex items-center justify-center md:justify-start gap-3 mb-6">
                         <div
                             class="w-8 h-8 rounded-lg gradient-btn flex items-center justify-center text-white font-black text-sm shadow-floating">
                             N</div>
@@ -301,33 +351,33 @@
                     </p>
                 </div>
                 <!-- Quick Links -->
-                <div>
+                <div class="flex flex-col items-center md:items-start">
                     <h3 class="label-md text-primary mb-6 tracking-widest text-xs">QUICK LINKS</h3>
                     <ul class="space-y-4">
                         <li><a href="index.html"
-                                class="body-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 group"><span
+                                class="body-lg text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center md:justify-start gap-2 group"><span
                                     class="material-symbols-outlined text-sm arrow-icon">arrow_forward</span>Home</a>
                         </li>
                         <li><a href="skills.html"
-                                class="body-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 group"><span
+                                class="body-lg text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center md:justify-start gap-2 group"><span
                                     class="material-symbols-outlined text-sm arrow-icon">arrow_forward</span>Skills</a>
                         </li>
                         <li><a href="development.html"
-                                class="body-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 group"><span
+                                class="body-lg text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center md:justify-start gap-2 group"><span
                                     class="material-symbols-outlined text-sm arrow-icon">arrow_forward</span>Development</a>
                         </li>
                     </ul>
                 </div>
                 <!-- Connect -->
-                <div>
+                <div class="flex flex-col items-center md:items-start">
                     <h3 class="label-md text-primary mb-6 tracking-widest text-xs">CONNECT</h3>
                     <ul class="space-y-4">
                         <li><a href="reflection.html"
-                                class="body-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 group"><span
+                                class="body-lg text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center md:justify-start gap-2 group"><span
                                     class="material-symbols-outlined text-sm arrow-icon">arrow_forward</span>Reflection</a>
                         </li>
                         <li><a href="contact.html"
-                                class="body-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 group"><span
+                                class="body-lg text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center md:justify-start gap-2 group"><span
                                     class="material-symbols-outlined text-sm arrow-icon">arrow_forward</span>Contact</a>
                         </li>
                     </ul>

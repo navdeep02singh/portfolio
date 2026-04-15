@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development | Navdeep Singh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0058BE",
+                        "primary-container": "#2170e4",
+                        background: "#f9f9ff",
+                        surface: "#f9f9ff",
+                        "surface-container-low": "#f1f3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e8ebf7",
+                        "surface-container-highest": "#e2e5f0",
+                        "on-surface": "#141B2B",
+                        "on-surface-variant": "#4a5068",
+                        "outline-variant": "#c2c6d6"
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    boxShadow: {
+                        'soft': '0 32px 48px -12px rgba(20, 27, 43, 0.04)',
+                        'floating': '0 8px 32px rgba(20, 27, 43, 0.04)',
+                    },
+                    letterSpacing: {
+                        'tightest': '-0.02em',
+                        'widest': '0.05em',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9ff;
+            color: #141B2B;
+            line-height: 1.6;
+        }
+
+        .glass-nav {
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(194, 198, 214, 0.15);
+        }
+
+        .gradient-btn {
+            background: linear-gradient(135deg, #0058BE 0%, #2170e4 100%);
+            border: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .gradient-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 32px rgba(33, 112, 228, 0.4);
+        }
+
+        .ghost-border {
+            border: 1px solid rgba(194, 198, 214, 0.15);
+        }
+
+        .display-lg {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .display-md {
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .headline-sm {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .body-lg {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .label-md {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+        }
+
+        .pg-padding {
+            padding-top: 160px;
+            padding-bottom: 128px;
+        }
+
+        .section-gap {
+            gap: 64px;
+        }
+
+        .dot-pattern {
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCI+CjxyZWN0IHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0ibm9uZSIvPgo8Y2lyY2xlIGN4PSIyNSIgY3k9IjI1IiByPSI1IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMiIvPgo8L3N2Zz4=');
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .interactive-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -12px rgba(0, 88, 190, 0.15);
+            border-color: rgba(0, 88, 190, 0.3);
+        }
+
+        .profile-interaction {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .profile-interaction:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 30px rgba(0, 88, 190, 0.2);
+        }
+
+        .arrow-icon {
+            display: inline-block;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: rotate(-45deg);
+        }
+
+        .group:hover .arrow-icon,
+        a:hover .arrow-icon,
+        button:hover .arrow-icon {
+            transform: rotate(0deg);
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-primary-container selection:text-white">
+
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html" class="headline-sm text-on-surface flex items-center gap-3">
+                <div
+                    class="w-10 h-10 rounded-[0.7rem] gradient-btn flex items-center justify-center text-white font-black text-lg shadow-floating">
+                    N</div>
+                Navdeep Singh
+            </a>
+            <div class="hidden md:flex gap-8 font-medium text-sm items-center">
+                <a href="index.html" class="text-on-surface-variant hover:text-primary transition-colors">Home</a>
+                <a href="skills.html" class="text-on-surface-variant hover:text-primary transition-colors">Skills</a>
+                <a href="development.html" class="text-primary font-bold border-b-2 border-primary pb-1">Development</a>
+                <a href="reflection.html"
+                    class="text-on-surface-variant hover:text-primary transition-colors">Reflection</a>
+                <a href="contact.html" class="text-on-surface-variant hover:text-primary transition-colors">Contact</a>
+
+            </div>
+            <button class="md:hidden text-primary">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 pg-padding flex flex-col section-gap animate-fade-in">
+        <header
+            class="relative gradient-btn p-10 md:p-16 rounded-[2.5rem] mb-8 overflow-hidden shadow-soft interactive-card border-none">
+            <div class="absolute inset-0 dot-pattern opacity-30"></div>
+            <div class="relative z-10 max-w-3xl">
+                <h1 class="display-lg text-white mb-4">Skills <br /><span class="text-white/90">Evolution.</span></h1>
+                <p class="body-lg text-white/80 text-lg">A systematic documentation of my journey, tracking progress
+                    across mandatory and optional competency areas.</p>
+            </div>
+        </header>
+
+        <section class="relative">
+            <div
+                class="absolute left-7 md:left-1/2 top-0 bottom-0 w-px bg-surface-container-highest md:-translate-x-1/2">
+            </div>
+
+            <div class="flex flex-col gap-16">
+                <div class="relative flex flex-col md:flex-row items-center justify-between group">
+                    <div class="md:w-[45%] text-left md:text-right pl-20 md:pl-0 mb-8 md:mb-0">
+                        <div class="label-md text-primary mb-3">Weeks 1-4</div>
+                        <h3 class="headline-sm text-on-surface mb-4">Foundation Building</h3>
+                        <p class="body-lg text-on-surface-variant">Focus on understanding module expectations,
+                            developing communication skills, and establishing punctuality habits.</p>
+                    </div>
+                    <div
+                        class="absolute left-6 md:left-1/2 w-4 h-4 bg-primary rounded-full md:-translate-x-1/2 z-10 shadow-floating outline outline-4 outline-surface">
+                    </div>
+                    <div class="md:w-[45%] pl-20 md:pl-0 w-full">
+                        <div
+                            class="bg-surface-container-lowest p-8 rounded-2xl shadow-soft ghost-border interactive-card">
+                            <p class="body-lg italic text-on-surface-variant">"Building strong foundations requires
+                                commitment and consistency."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative flex flex-col md:flex-row-reverse items-center justify-between group">
+                    <div class="md:w-[45%] text-left pl-20 md:pl-0 mb-8 md:mb-0">
+                        <div class="label-md text-primary mb-3">Weeks 5-8</div>
+                        <h3 class="headline-sm text-on-surface mb-4">Collaboration Growth</h3>
+                        <p class="body-lg text-on-surface-variant">Engaged in group projects, improved teamwork
+                            capabilities, and developed peer support networks.</p>
+                    </div>
+                    <div
+                        class="absolute left-6 md:left-1/2 w-4 h-4 bg-primary rounded-full md:-translate-x-1/2 z-10 shadow-floating outline outline-4 outline-surface">
+                    </div>
+                    <div class="md:w-[45%] text-left md:text-right pl-20 md:pl-0 w-full">
+                        <div
+                            class="bg-surface-container-lowest p-8 rounded-2xl shadow-soft ghost-border interactive-card">
+                            <p class="body-lg italic text-on-surface-variant">"True collaboration creates results
+                                greater than individual efforts."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative flex flex-col md:flex-row items-center justify-between group">
+                    <div class="md:w-[45%] text-left md:text-right pl-20 md:pl-0 mb-8 md:mb-0">
+                        <div class="label-md text-primary mb-3">Weeks 9-12</div>
+                        <h3 class="headline-sm text-on-surface mb-4">Independent Excellence</h3>
+                        <p class="body-lg text-on-surface-variant">Focused on self-directed learning, completing all
+                            Canvas activities, and reflecting on overall progress.</p>
+                    </div>
+                    <div
+                        class="absolute left-[20px] md:left-1/2 w-6 h-6 gradient-btn rounded-full md:-translate-x-1/2 z-10 shadow-floating outline outline-4 outline-surface">
+                    </div>
+                    <div class="md:w-[45%] pl-20 md:pl-0 w-full">
+                        <div
+                            class="bg-surface-container-lowest p-8 rounded-2xl shadow-soft ghost-border interactive-card">
+                            <div class="label-md text-primary mb-2">Current Phase</div>
+                            <p class="body-lg text-on-surface-variant font-medium">Completing final assessments and
+                                documenting achievements.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-surface-container-low pt-20 pb-12 border-t ghost-border">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Branding & Bio -->
+                <div class="col-span-1 md:col-span-2">
+                    <a href="index.html" class="headline-sm text-on-surface flex items-center gap-3 mb-6">
+                        <div
+                            class="w-8 h-8 rounded-lg gradient-btn flex items-center justify-center text-white font-black text-sm shadow-floating">
+                            N</div>
+                        Navdeep Singh
+                    </a>
+                    <p class="body-lg text-on-surface-variant max-w-sm">
+                        A digital portfolio showcasing professional development, strategic insights, and core
+                        employability skills acquired during my BSc Business Management journey.
+                    </p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="label-md text-primary mb-6 tracking-widest text-xs">QUICK LINKS</h3>
+                    <ul class="space-y-4">
+                        <li><a href="index.html"
+                                class="body-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 group"><span
+                                    class="material-symbols-outlined text-sm arrow-icon">arrow_forward</span>Home</a>
+                        </li>
+                        <li><a href="skills.html"
+                                class="body-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 group"><span
+                                    class="material-symbols-outlined text-sm arrow-icon">arrow_forward</span>Skills</a>
+                        </li>
+                        <li><a href="development.html"
+                                class="body-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 group"><span
+                                    class="material-symbols-outlined text-sm arrow-icon">arrow_forward</span>Development</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Connect -->
+                <div>
+                    <h3 class="label-md text-primary mb-6 tracking-widest text-xs">CONNECT</h3>
+                    <ul class="space-y-4">
+                        <li><a href="reflection.html"
+                                class="body-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 group"><span
+                                    class="material-symbols-outlined text-sm arrow-icon">arrow_forward</span>Reflection</a>
+                        </li>
+                        <li><a href="contact.html"
+                                class="body-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 group"><span
+                                    class="material-symbols-outlined text-sm arrow-icon">arrow_forward</span>Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Bottom Bar -->
+            <div
+                class="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-outline-variant/30 text-center md:text-left">
+                <div class="text-on-surface-variant font-medium text-sm">© 2026 Navdeep Singh. All rights reserved. <br
+                        class="md:hidden" />BSc Business Management</div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

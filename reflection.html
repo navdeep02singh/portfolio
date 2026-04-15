@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflection | Navdeep Singh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0058BE",
+                        "primary-container": "#2170e4",
+                        background: "#f9f9ff",
+                        surface: "#f9f9ff",
+                        "surface-container-low": "#f1f3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e8ebf7",
+                        "surface-container-highest": "#e2e5f0",
+                        "on-surface": "#141B2B",
+                        "on-surface-variant": "#4a5068",
+                        "outline-variant": "#c2c6d6"
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    boxShadow: {
+                        'soft': '0 32px 48px -12px rgba(20, 27, 43, 0.04)',
+                        'floating': '0 8px 32px rgba(20, 27, 43, 0.04)',
+                    },
+                    letterSpacing: {
+                        'tightest': '-0.02em',
+                        'widest': '0.05em',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9ff;
+            color: #141B2B;
+            line-height: 1.6;
+        }
+
+        .glass-nav {
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(194, 198, 214, 0.15);
+        }
+
+        .gradient-btn {
+            background: linear-gradient(135deg, #0058BE 0%, #2170e4 100%);
+            border: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .gradient-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 32px rgba(33, 112, 228, 0.4);
+        }
+
+        .ghost-border {
+            border: 1px solid rgba(194, 198, 214, 0.15);
+        }
+
+        .display-lg {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .display-md {
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .headline-sm {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .body-lg {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .label-md {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+        }
+
+        .pg-padding {
+            padding-top: 160px;
+            padding-bottom: 128px;
+        }
+
+        .section-gap {
+            gap: 64px;
+        }
+
+        .dot-pattern {
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCI+CjxyZWN0IHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0ibm9uZSIvPgo8Y2lyY2xlIGN4PSIyNSIgY3k9IjI1IiByPSI1IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMiIvPgo8L3N2Zz4=');
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .interactive-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -12px rgba(0, 88, 190, 0.15);
+            border-color: rgba(0, 88, 190, 0.3);
+        }
+
+        .profile-interaction {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .profile-interaction:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 30px rgba(0, 88, 190, 0.2);
+        }
+
+        .arrow-icon {
+            display: inline-block;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: rotate(-45deg);
+        }
+
+        .group:hover .arrow-icon,
+        a:hover .arrow-icon,
+        button:hover .arrow-icon {
+            transform: rotate(0deg);
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-primary-container selection:text-white">
+
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html" class="headline-sm text-on-surface flex items-center gap-3">
+                <div
+                    class="w-10 h-10 rounded-[0.7rem] gradient-btn flex items-center justify-center text-white font-black text-lg shadow-floating">
+                    N</div>
+                Navdeep Singh
+            </a>
+            <div class="hidden md:flex gap-8 font-medium text-sm items-center">
+                <a href="index.html" class="text-on-surface-variant hover:text-primary transition-colors">Home</a>
+                <a href="skills.html" class="text-on-surface-variant hover:text-primary transition-colors">Skills</a>
+                <a href="development.html"
+                    class="text-on-surface-variant hover:text-primary transition-colors">Development</a>
+                <a href="reflection.html" class="text-primary font-bold border-b-2 border-primary pb-1">Reflection</a>
+                <a href="contact.html" class="text-on-surface-variant hover:text-primary transition-colors">Contact</a>
+
+            </div>
+            <button class="md:hidden text-primary">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 pg-padding flex flex-col section-gap animate-fade-in">
+        <header
+            class="relative gradient-btn p-10 md:p-16 rounded-[2.5rem] mb-8 overflow-hidden shadow-soft interactive-card border-none">
+            <div class="absolute inset-0 dot-pattern opacity-30"></div>
+            <div class="relative z-10 max-w-3xl">
+                <h1 class="display-lg text-white mb-4">Reflective <br /><span class="text-white/90">Journal.</span></h1>
+                <p class="body-lg text-white/80 text-lg">A deep dive into professional growth, module insights, and
+                    future career objectives.</p>
+            </div>
+        </header>
+
+        <div class="flex flex-col lg:flex-row gap-16 items-start">
+            <article
+                class="flex-1 bg-surface-container-lowest p-10 md:p-16 rounded-[2rem] shadow-soft ghost-border interactive-card">
+                <h2 class="headline-sm text-on-surface mb-8">Reflection Analysis</h2>
+
+                <div class="space-y-6 body-lg text-on-surface-variant text-justify">
+                    <p>The Principles of Marketing module has been a very important part of my journey as it has
+                        contributed to the development of my perception of professional development and employability
+                        skills. Although at first, I was not sure about group activities, with practice and feedback, I
+                        have gained some confident communication skills that allow me to express ideas clearly when
+                        making presentations and discussing topics in the classroom.</p>
+
+                    <p>Timekeeping has been a part of my educational identity. A 100% attendance has not only proven to
+                        be reliable to my lecturers but also helped me to develop the necessary level of discipline
+                        necessary in a professional setting. This sense of timeliness is a manifestation of my knowledge
+                        that credibility is established by little bites.</p>
+
+                    <p>Working together has helped me to appreciate different ideas. Collaborating with colleagues of
+                        diverse backgrounds has helped me become more culturally aware and more skilled to make a
+                        valuable contribution towards team goals. I have also come to understand that effective teamwork
+                        necessitates active listening, flexibility and sincerity towards the idea of others.</p>
+
+                    <p>Self-directed learning has been revolutionizing. Assuming responsibility of my Canvas preparation
+                        and taking initiative in other resources has boosted my academic development. This self-managed
+                        style will be of good use in my future life when I will be in the professional sphere and should
+                        be able to learn constantly to remain competitive.</p>
+
+                    <p>In the future, I will continue to work on these competencies. I aspire to be in a management role
+                        where I will be able to put these skills to use in order to bring about organisational success
+                        as well as continue to develop as a professional.</p>
+                </div>
+
+                <div class="mt-12 pt-8 border-t border-surface-container-highest flex items-center gap-6">
+                    <img src="notion-profile.png" alt="Navdeep"
+                        class="w-16 h-16 rounded-full object-cover shadow-soft bg-surface-container-low p-1 profile-interaction">
+                    <div>
+                        <div class="headline-sm text-base text-on-surface">Navdeep Singh</div>
+                        <div class="label-md text-on-surface-variant mt-1">BSc Business Management</div>
+                    </div>
+                </div>
+            </article>
+
+            <aside class="w-full lg:w-1/3 flex flex-col gap-8">
+                <div class="bg-surface-container-lowest p-8 rounded-2xl shadow-soft ghost-border interactive-card">
+                    <h3 class="headline-sm text-on-surface mb-6">Key Insights</h3>
+                    <ul class="space-y-6">
+                        <li class="flex gap-4">
+                            <span class="material-symbols-outlined text-primary shrink-0">check_circle</span>
+                            <span class="body-lg text-on-surface-variant">Communication skills improve through
+                                practice</span>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="material-symbols-outlined text-primary shrink-0">check_circle</span>
+                            <span class="body-lg text-on-surface-variant">Punctuality builds professional
+                                credibility</span>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="material-symbols-outlined text-primary shrink-0">check_circle</span>
+                            <span class="body-lg text-on-surface-variant">Collaboration creates superior outcomes</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="gradient-btn p-8 rounded-2xl shadow-floating interactive-card">
+                    <h3 class="headline-sm text-white mb-4">Future Goals</h3>
+                    <p class="body-lg text-white/90 mb-8">To secure a management position in a dynamic organisation
+                        where I can apply knowledge to drive growth.</p>
+                    <div class="flex flex-wrap gap-2 text-white">
+                        <span class="px-3 py-1 bg-white/20 rounded font-medium text-sm">Marketing</span>
+                        <span class="px-3 py-1 bg-white/20 rounded font-medium text-sm">Management</span>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-surface-container-lowest p-8 rounded-2xl shadow-soft ghost-border relative overflow-hidden group interactive-card">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-110">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="material-symbols-outlined text-primary">chat_bubble</span>
+                            <h3 class="headline-sm text-base text-on-surface">Peer Feedback</h3>
+                        </div>
+                        <p class="body-lg text-on-surface-variant italic">
+                            "Feedback from peers highlighted my reliability, empathy, and commitment to group work,
+                            while encouraging me to contribute more confidently during discussions."
+                        </p>
+                        <div
+                            class="mt-4 pt-4 border-t border-surface-container-highest flex items-center justify-between">
+                            <span class="label-md text-primary text-[10px]">Collaborative Growth</span>
+                            <span class="material-symbols-outlined text-primary text-sm">more_horiz</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+    </main>
+
+    <footer class="bg-surface-container-low pt-20 pb-12 border-t ghost-border">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Branding & Bio -->
+                <div class="col-span-1 md:col-span-2">
+                    <a href="index.html" class="headline-sm text-on-surface flex items-center gap-3 mb-6">
+                        <div
+                            class="w-8 h-8 rounded-lg gradient-btn flex items-center justify-center text-white font-black text-sm shadow-floating">
+                            N</div>
+                        Navdeep Singh
+                    </a>
+                    <p class="body-lg text-on-surface-variant max-w-sm">
+                        A digital portfolio showcasing professional development, strategic insights, and core
+                        employability skills acquired during my BSc Business Management journey.
+                    </p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="label-md text-primary mb-6 tracking-widest text-xs">QUICK LINKS</h3>
+                    <ul class="space-y-4">
+                        <li><a href="index.html"
+                                class="body-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 group"><span
+                                    class="material-symbols-outlined text-sm arrow-icon">arrow_forward</span>Home</a>
+                        </li>
+                        <li><a href="skills.html"
+                                class="body-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 group"><span
+                                    class="material-symbols-outlined text-sm arrow-icon">arrow_forward</span>Skills</a>
+                        </li>
+                        <li><a href="development.html"
+                                class="body-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 group"><span
+                                    class="material-symbols-outlined text-sm arrow-icon">arrow_forward</span>Development</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Connect -->
+                <div>
+                    <h3 class="label-md text-primary mb-6 tracking-widest text-xs">CONNECT</h3>
+                    <ul class="space-y-4">
+                        <li><a href="reflection.html"
+                                class="body-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 group"><span
+                                    class="material-symbols-outlined text-sm arrow-icon">arrow_forward</span>Reflection</a>
+                        </li>
+                        <li><a href="contact.html"
+                                class="body-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 group"><span
+                                    class="material-symbols-outlined text-sm arrow-icon">arrow_forward</span>Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Bottom Bar -->
+            <div
+                class="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-outline-variant/30 text-center md:text-left">
+                <div class="text-on-surface-variant font-medium text-sm">© 2026 Navdeep Singh. All rights reserved. <br
+                        class="md:hidden" />BSc Business Management</div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
